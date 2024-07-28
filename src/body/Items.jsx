@@ -1,33 +1,37 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { itemsFetch } from './itemsSlice'; // Replace with the actual path to your slice
+import { Products } from './Products';
+
 export const Items = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.items.data);
+  const status = useSelector((state) => state.items.status);
 
-    const [data, setData] = useState([]);
-    const dispatch = useDispatch()
-    const datas = useSelector(state => state.player.data);
-    const status = useSelector(state => state.player.status);
+  useEffect(() => {
+    dispatch(itemsFetch());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(playerFetch());
-      }, [dispatch]);
-
-    useEffect(()=>{
-        console.log(data)
-        if(status === "succeeded"){
-            setData(datas)
-        }
-    }, [status, data])
-    
-    if(status === 'loading'){
-        return(
-            <p>LOADING</p>
-        )
-    }
-
+  if(status === 'loading'){
     return(
-        <section>
-            {data.map(data => (
-            <p className="hola">{data.brand}</p>
-        ))}
-        </section>
-        
+        <p className="text">
+        Loading...
+    </p>
     );
+  }
+
+  if(status === 'failed'){
+    return(
+        <p className="text">
+        Failed to load items.
+    </p>
+    );
+  }
+
+  if(status === 'succeeded'){
+    return(
+        <Products items={items} />
+    );
+  }
 }
+

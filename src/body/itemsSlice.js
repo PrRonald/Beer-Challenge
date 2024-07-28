@@ -3,7 +3,7 @@ import axios from "axios";
 
 const URL = 'http://localhost:3000/products';
 export const itemsFetch = createAsyncThunk(
-    'item/itemsFetch',
+    'items/itemsFetch',
     async () => {
         const response = await axios.get(URL);
         return response.data;
@@ -12,7 +12,8 @@ export const itemsFetch = createAsyncThunk(
 
 export const itemsSlice = createSlice({
     initialState: {
-        value: 0
+        value: 0,
+        status: "idle"
     },
     name: 'items',
     extraReducers: (builder) => {
