@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens:{
+      'mobile': '360px'
+    },
     extend: {
       fontFamily: {
         DM: ['DM Sans', 'sans-serif']

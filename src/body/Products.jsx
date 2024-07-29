@@ -12,8 +12,7 @@ export const Products = ({ items, stockPrices }) => {
                     <div className={`w-[155px] h-[195px] grid grid-cols-1 grid-rows-[auto_auto_auto]
                             gap-1 rounded-[12px] ${index % 2 ? "rounded-tl-[32px]" : "rounded-tr-[32px]"}
                              bg-white place-items-center`}>
-                        <h1 className="w-full text-base font-DM font-medium text-black
-                            text-center">
+                        <h1 className="w-full text-base font-DM font-medium text-black text-center">
                             {item.brand}
                         </h1>
                         <div style={{

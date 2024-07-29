@@ -129,11 +129,11 @@ export const ViewProduct = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full grid grid-cols-[25%_75%] grid-row-1 pt-12 pb-9 gap-6">
+                    <div className="w-full grid grid-cols-[25%_75%] grid-row-1 pt-12 pb-9 ">
                         <div className="w-full border rounded-[54px] border-orange-400 flex items-center ">
                             <LiaShoppingBagSolid className="w-full text-center text-[24px] text-orange-400" />
                         </div>
-                        <div className="">
+                        <div className="place-self-end">
                             <ButtonAdd value={"Add to cart"} />
                         </div>
                     </div>
