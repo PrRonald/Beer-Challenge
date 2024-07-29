@@ -6,17 +6,24 @@ import { ViewProduct } from './viewproduct/ViewProduct.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Provider } from "react-redux"
 import store from './store'
+import { ErrorPage } from './components/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />
+    path: "/products",
+    element: <App />,
+    errorElement: <ErrorPage error={"Page not found"} />
   },
   {
-    path: "/product/:productId",
+    path: "/products/:productId",
+    errorElement: <ErrorPage error={"Page not found"} />,
     element: <ViewProduct />
   }
-])
+  
+],
+{
+  basename: "/products"
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

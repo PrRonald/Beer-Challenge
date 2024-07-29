@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, redirect, useNavigate, useParams } from "react-router-dom";
 import { Nav } from "./Nav";
 import { useDispatch, useSelector } from "react-redux";
 import { itemsFetch, stockPriceFetch } from "../body/itemsSlice";
@@ -7,6 +7,8 @@ import { truncateString } from "./truncateString";
 import { LiaShoppingBagSolid } from "react-icons/lia";
 import { ButtonAdd } from "./ButtonAdd";
 import { ImgView } from "./ImgView";
+import { Redirect } from "../functions/redirect";
+import { ErrorPage } from "../components/ErrorPage";
 
 const parseBeerInfo = (carString) => {
     const [id, brand, model] = carString.split('-');
@@ -14,6 +16,8 @@ const parseBeerInfo = (carString) => {
 };
 
 export const ViewProduct = () => {
+
+    const navigate = useNavigate()
 
     const { productId } = useParams()
     const { id, brand, model } = parseBeerInfo(productId)
@@ -37,6 +41,9 @@ export const ViewProduct = () => {
     useEffect(() => {
         if (itemsStatus === 'succeeded' && stockPricesStatus === 'succeeded') {
             const info = items.find(item => item.id === id);
+            if(!info){
+                navigate("/error")
+            }
             if (info) {
                 setBeerInfo(info);
                 setSelectedOption(info.skus[0]?.name);
@@ -65,6 +72,10 @@ export const ViewProduct = () => {
         const handleOptionChange = (event) => {
             setSelectedOption(event.target.value);
         };
+
+        const handlebutton = () => {
+            alert(beerInfo.brand + " added to the cart")
+        }
 
         return (
             <section className="w-full flex flex-col items-center px-4 pt-10">
@@ -133,9 +144,11 @@ export const ViewProduct = () => {
                         <div className="w-full border rounded-[54px] border-orange-400 flex items-center ">
                             <LiaShoppingBagSolid className="w-full text-center text-[24px] text-orange-400" />
                         </div>
-                        <div className="place-self-end">
+                        <button
+                            onClick={handlebutton}
+                            className="place-self-end">
                             <ButtonAdd value={"Add to cart"} />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </section>
