@@ -6,7 +6,7 @@ export const Nav = () => {
     return(
         <section className="w-full grid grid-cols-3 grid-rows-1 place-items-center">
             <div className="place-self-start self-center">
-                <Link to="/">
+                <Link to="/products">
                     <FaArrowLeft className="text-2xl  " />
                 </Link>
             </div>

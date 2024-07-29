@@ -31,7 +31,7 @@ export const Products = ({ items, stockPrices }) => {
                                 </h2>
                             </div>
                             <div className="place-self-end">
-                                <AddButton to={`product/${item.id}-${(item.brand).replace(/ /g, '-')}`} />
+                                <AddButton to={`${item.id}-${(item.brand).replace(/ /g, '-')}`} />
                             </div>
                         </div>
                     </div>
