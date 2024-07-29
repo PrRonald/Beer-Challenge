@@ -3,7 +3,7 @@ import { AddButton } from "../AddButton";
 export const Products = ({ items, stockPrices }) => {
 
     return (
-        <section className="grid grid-cols-[155px_155px] grid-flow-row place-items-center
+        <section className="grid grid-cols-[155px_155px] grid-flow-row place-items-center justify-center
                 gap-x-[13px] gap-y-[5px] ">
             {items.map((item, index) => (
                 <div

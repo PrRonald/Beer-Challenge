@@ -1,11 +1,14 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
     return(
         <section className="w-full grid grid-cols-3 grid-rows-1 place-items-center">
             <div className="place-self-start self-center">
-                <FaArrowLeft className="text-2xl  " />
+                <Link to="/">
+                    <FaArrowLeft className="text-2xl  " />
+                </Link>
             </div>
             <div className="place-self-center">
                 <h1 className="w-full text-center font-DM font-bold text-lg">
