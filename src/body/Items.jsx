@@ -33,7 +33,7 @@ export const Items = () => {
 
   if(itemsStatus === 'succeeded' && stockPricesStatus ===  'succeeded'){
     return(
-      <div className="w-full flex justify-center">
+      <div className="w-full">
         <Products items={items} stockPrices={stockPrices} />
       </div>
     );

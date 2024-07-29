@@ -5,6 +5,8 @@ import { itemsFetch, stockPriceFetch } from "../body/itemsSlice";
 import { useEffect, useState } from "react";
 import { truncateString } from "./truncateString";
 import { LiaShoppingBagSolid } from "react-icons/lia";
+import { ButtonAdd } from "./ButtonAdd";
+import { ImgView } from "./ImgView";
 
 
 const parseBeerInfo = (carString) => {
@@ -50,48 +52,38 @@ export const ViewProduct = () => {
         };
 
         return (
-            <section className="w-full">
-                <div className="w">
+            <section className="w-full flex flex-col items-center px-4 pt-10">
+                <div className="w-full pt-[4px]">
                     <Nav />
-                </div>
-                <div
-                    style={{
-                        backgroundImage: `url(/img${beerInfo.image})`,
-                        backgroundSize: 'contain',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: "no-repeat",
-                        height: '122px',
-                        width: '122px',
-                    }}
-                    className="w">
-                </div>
+                </div >
+                    <ImgView img={beerInfo.image} size={{h: "240px", w: "240px"}} />
                 <div>
                     <div className="w">
                         <div className="w">
-                            <h1 className="text">
+                            <h1 className="w-full text-start font-DM font-bold text-2xl">
                                 {beerInfo.brand}
                             </h1>
-                            <h2 className="text">
-                                Origin: {beerInfo.origin} | Stock:
+                            <h2 className="w-full text-start font-DM font-normal text-gray-400 ">
+                                Origin: {beerInfo.origin} I Stock:
                             </h2>
                         </div>
-                        <div className="w">
-                            <h1 className="text">
+                        <div className="w-full flex flex-col justify-center pt-5">
+                            <h1 className="w-full text-start font-bold font-DM  text-base pb-2 ">
                                 Description
                             </h1>
-                            <p className="text">
+                            <p className="w-full text-start font-normal font-DM text-gray-400">
                                 {beerInfo.information}
                             </p>
                         </div>
                     </div>
-                    <div className="w">
+                    <div className="w-full grid  grid-cols-1 grid-rows-2 gap-3 pt-4 ">
                         <div className="w">
-                            <h1 className="text">
+                            <h1 className="w-full text-start font-DM font-bold text-base">
                                 Size
                             </h1>
                         </div>
                         <div >
-                            <div className="w-full grid grid-rows-1 grid-cols-3 gap-4 place-items-center" >
+                            <div className="w-full grid grid-rows-1 grid-flow-col gap-4 place-content-start " >
                                 {beerInfo.skus.map(option => (
                                     <div className={`w-[87px] h-[31px] 
                                         ${selectedOption === option.name ?
@@ -103,7 +95,6 @@ export const ViewProduct = () => {
                                             key={option.code}
                                             htmlFor={option.name}>
                                             {truncateString(option.name)}
-
                                             <input
                                                 id={option.name}
                                                 type="checkbox"
@@ -114,20 +105,16 @@ export const ViewProduct = () => {
                                             />
                                         </label>
                                     </div>
-
                                 ))}
                             </div>
                         </div>
                     </div>
-                    <div className="w-full grid grid-cols-[25%_75%] grid-row-1 gap-6">
+                    <div className="w-full grid grid-cols-[25%_75%] grid-row-1 pt-12 pb-9 gap-6">
                         <div className="w-full border rounded-[54px] border-orange-400 flex items-center ">
                             <LiaShoppingBagSolid className="w-full text-center text-[24px] text-orange-400" />
                         </div>
-                        <div className="w-[247px] h-[54px] flex items-center 
-                        rounded-xl bg-orange-400 text-white">
-                            <h1 className="w-full text-center">
-                                Add to cart
-                            </h1>
+                        <div className="">
+                            <ButtonAdd value={"Add to cart"} />
                         </div>
                     </div>
                 </div>
