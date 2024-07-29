@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
 import { Items } from "./Items";
 
 export const Body = () => {
-
     return(
-        <section>
+        <section className="w-full">
             <Items />
         </section>
     );

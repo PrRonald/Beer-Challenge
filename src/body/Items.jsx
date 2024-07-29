@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemsFetch } from './itemsSlice'; // Replace with the actual path to your slice
+import { itemsFetch, stockPriceFetch } from './itemsSlice'; 
 import { Products } from './Products';
 
 export const Items = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.items.data);
-  const status = useSelector((state) => state.items.status);
+  const itemsStatus = useSelector((state) => state.items.status);
+  const stockPrices = useSelector((state) => state.stockPrice.data);
+  const stockPricesStatus = useSelector((state) => state.stockPrice.status);
 
   useEffect(() => {
     dispatch(itemsFetch());
+    dispatch(stockPriceFetch());
   }, [dispatch]);
 
-  if(status === 'loading'){
+  if(itemsStatus === 'loading' && stockPricesStatus ===  'loading'){
     return(
         <p className="text">
         Loading...
@@ -20,7 +23,7 @@ export const Items = () => {
     );
   }
 
-  if(status === 'failed'){
+  if(itemsStatus === 'failed'){
     return(
         <p className="text">
         Failed to load items.
@@ -28,9 +31,11 @@ export const Items = () => {
     );
   }
 
-  if(status === 'succeeded'){
+  if(itemsStatus === 'succeeded' && stockPricesStatus ===  'succeeded'){
     return(
-        <Products items={items} />
+      <div className="w-full flex justify-center">
+        <Products items={items} stockPrices={stockPrices} />
+      </div>
     );
   }
 }

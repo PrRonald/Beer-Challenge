@@ -3,7 +3,7 @@ import { Header } from "./header/Header";
 
 export const App = () => {
   return(
-    <section className="w">
+    <section className="w-full bg-[#FAFAFA]">
       <div className="w-full grid-cols-1 grid-flow-row px-4">
         <div className="w-full">
           <Header />
