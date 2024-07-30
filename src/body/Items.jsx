@@ -12,7 +12,7 @@ export const Items = () => {
 
   useEffect(() => {
     dispatch(itemsFetch());
-    dispatch(stockPriceFetch());
+    dispatch(stockPriceFetch({id: null, path: false}));
   }, [dispatch]);
 
   if(itemsStatus === 'loading' && stockPricesStatus ===  'loading'){

@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import { AddButton } from "../AddButton";
+import { useEffect } from "react";
+import { stockPriceFetch } from "./itemsSlice";
 
 export const Products = ({ items, stockPrices }) => {
 
@@ -16,13 +19,13 @@ export const Products = ({ items, stockPrices }) => {
                             {item.brand}
                         </h1>
                         <div style={{
-                                backgroundImage: `url(./img${item.image})`,
-                                backgroundSize: 'contain',
-                                backgroundPosition: 'center',
-                                backgroundRepeat: "no-repeat",
-                                height: '122px',
-                                width: '122px',
-                            }}>
+                            backgroundImage: `url(./img${item.image})`,
+                            backgroundSize: 'contain',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: "no-repeat",
+                            height: '122px',
+                            width: '122px',
+                        }}>
                         </div>
                         <div className="w-full grid grid-cols-2 grid-row-1 items-center">
                             <div className="w-full ">

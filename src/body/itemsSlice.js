@@ -13,8 +13,9 @@ export const itemsFetch = createAsyncThunk(
 const URL2 = 'http://localhost:3000/stockPrice';
 export const stockPriceFetch = createAsyncThunk(
     'stockPrice/stockPriceFetch',
-    async () => {
-        const response = await axios.get(URL2);
+    async (sku) => {
+        const url = (sku.path) ? `${URL2}/${sku.id}` : URL2 ;
+        const response = await axios.get(url);
         return response.data;
     }
 );

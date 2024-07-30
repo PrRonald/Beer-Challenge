@@ -31,9 +31,10 @@ export const ViewProduct = () => {
     const [beerInfo, setBeerInfo] = useState({})
     const [selectedOption, setSelectedOption] = useState(null);
 
+
     useEffect(() => {
         dispatch(itemsFetch());
-        dispatch(stockPriceFetch());
+        dispatch(stockPriceFetch({id: null, path: false}));
 
     }, [dispatch]);
 
